@@ -3,6 +3,14 @@ let searchBar = document.querySelector('.search-bar-wrapper')
 let searchBtn = document.querySelector('.search-btn')
 let searchIcon = document.querySelector('.bx-search-alt-2')
 let logo = document.querySelector('.logo')
+let cwGrid = document.querySelector('#cw-grid')
+let footer = document.querySelector('#footer')
+
+
+if(!cwGrid){
+    footer.style.position = 'absolute'
+    footer.style.bottom = 0
+}
 
 // toggle search input box when search icon is selected
 searchBtn.addEventListener('click', function(){
@@ -54,14 +62,8 @@ async function getCountryData(){
     shuffleArray(cityNames)
 }
 
- 
-    
-
-
 // filter country names as user types
 inputEl.addEventListener('input', onInputChange)
-
-
 
 
 function onInputChange(){

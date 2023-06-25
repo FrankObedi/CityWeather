@@ -43,6 +43,7 @@ body{
     margin-left:auto;
     margin-right:auto;    
     background-repeat: no-repeat;
+    height: max-content;
     /* position: relative; */
 }
 
@@ -465,16 +466,10 @@ footer p{
     }
 }
 
-@media screen and (min-width: 800px) {
+@media (min-height: 600px) and (min-width: 800px) {
     footer{
         position: absolute;
         bottom: 0;
     }
 }
 
-@media (orientation: portrait) {
-    footer{
-        position: absolute;
-        bottom: 0;
-    }
-}
