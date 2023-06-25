@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>City Weather</title>
+
+    <link rel="icon" type="img/x-icon" href="/static/graphics/favicon.ico" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css" />
+
+    <!-- Boxicons css -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Open Sans font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="/">
+        <img src="../static/graphics/weather-forecast.png" />
+        <h3>City Weather</h3>
+      </a>
+      <div class="search">
+        <form method="post" autocomplete="off">
+          <div class="search-bar-wrapper">
+            <div id="autocomplete-wrapper" class="autocomplete-wrapper">
+              <input
+                type="text"
+                class="search-box"
+                required
+                name="city"
+                disabled
+                pattern="^[A-Za-z, ]*$"
+                title="City name can only contain letters, spaces and commas"
+                placeholder="Enter city name"
+              />
+
+              <!-- <ul class="autocomplete-list dt-tab" id="autocomplete-list"></ul> -->
+            </div>
+
+            <button class="search-btn" type="button">
+              <i class="bx bx-search-alt-2"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </header>
+    <div class="content">
+      {% block content %}
+      <!-- Templates will go here -->
+      {% endblock %}
+    </div>
+
+    <footer>
+      <ul class="socials">
+        <li>
+          <a
+            href="https://www.linkedin.com/in/frank-obedi-573421251/"
+            target="_blank"
+            ><i class="bx bxl-linkedin-square"></i> LinkedIn</a
+          >
+        </li>
+        <li>
+          <a href="https://github.com/FrankObedi" target="_blank"
+            ><i class="bx bxl-github"></i> GitHub</a
+          >
+        </li>
+      </ul>
+      <p>&copy; 2023 Frank Obedi. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="/static/javascript/script.js"></script>
+  </body>
+</html>

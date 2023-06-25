@@ -1,0 +1,473 @@
+
+/* general styling */
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+*,
+html{
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* get rid of extra space under icons */
+img{vertical-align:text-bottom}
+
+/* colors */
+:root{
+    --blue: rgba(80, 160, 255, 1);
+    --glass-blue: rgba(255, 255, 255, 0.20);
+    --border-white: rgba(255, 255, 255, 0.40);
+    --green: #6BFC54;
+    --lime: #B1E420;
+    --yellow: #FFE600;
+    --red: #FF2D2D;
+    --dark-red: #AA1010;
+}
+
+html, body{
+    min-height:100%;
+    width: 100%;
+}
+
+body{
+    background: #b92b27;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #1565C0, #b92b27);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #1565C0, #b92b27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    max-width: 1000px;
+    margin-left:auto;
+    margin-right:auto;    
+    background-repeat: no-repeat;
+    /* position: relative; */
+}
+
+
+/*----------- Logo and search bar -----------*/
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    height: 150px;
+    position: relative;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    text-align: center;
+    text-decoration: none;
+    z-index: 5;
+    color: white;
+}
+
+.logo h3{
+    font-size: 1.5rem;
+}
+
+.logo img{
+    border-radius: 50%;
+    border: 1px solid #810707;
+}
+
+.search-bar-wrapper{
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    position: relative;
+}
+
+.search-box{
+    width: 0;
+    padding: 8px 20px;
+    color: black;
+    border: none;
+    outline: none;
+    border-radius: 30px;    
+    background: white;
+    font-size: 14px;
+}
+
+.autocomplete-wrapper{
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.autocomplete-list{
+    /* display: none; */
+    list-style: none;
+    padding: unset;
+    margin: unset;
+    border: 1px solid white;
+    width: 100%;
+    max-height: 400px;
+    padding: 10px; 
+    margin-top: 5px;
+    backdrop-filter: blur(15px);
+    position: absolute;
+    overflow: auto;
+}
+
+button{
+    cursor: pointer;
+    color: white;
+}
+
+.autocomplete-list button{
+    border: unset;
+    background: unset;
+    padding: 0.5em;
+    width: 100%;
+    text-align: left;
+}
+
+.autocomplete-list li{
+    border-bottom: 1px solid white;
+    border-top: unset;
+}
+
+.autocomplete-list li:hover{
+    background: var(--glass-blue);
+}
+
+.show-dropdown{
+    display: block;
+}
+
+.search-btn{
+    position: absolute;   
+    /* right: 0; */
+    /* outline: unset;*/
+    border: unset;
+    background: unset;
+    text-align: center;
+    padding: 8px 10px; 
+    /* border: 2px solid red; */
+}
+
+.search-btn i{
+    color: rgba(80, 160, 255, 1);
+    width: 100%;
+    font-size: 22px;
+    text-align: center;
+}
+
+.active-search-bar{   
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0, 0, 0, 0.829); */
+    padding: 10px 20px;
+    z-index: 100;
+    justify-content: flex-end;
+    align-items: center;
+    transition: all 0.2s ease-in;
+}
+
+.reveal-search{
+    width: 100%;
+}
+
+.icon-active{
+    z-index: 100; 
+    padding-top: 10px;
+    /* margin-right: 15px;    */    
+}
+
+.icon-active i{
+    font-size: 1.8rem;
+}
+
+.hide-logo{
+    opacity: 0;
+}
+
+/*----------- Main content -----------*/
+.content{
+    /* border: 1px solid blue; */
+    display: grid;
+    grid-template-columns: auto;
+    gap: 15px;
+    padding: 15px 10px;
+}
+
+/*----------- Home page -----------*/
+
+.h-page{
+    display: flex;
+    flex-direction: column;
+    gap: 25px
+}
+
+.cw-grid{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    width: 100%;
+}
+
+.cw-data-grid{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.cw-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+}
+
+
+.cw-left-top{
+    display: flex;    
+}
+
+.cw-left-top .cw-temp-val{
+   font-size: 2.5em;  
+   margin-left: -10px;
+}
+
+.cw-left-top img{
+    margin: -15px 0 0 -15px;
+}
+
+.cw-temp-val h3 span{    
+    font-weight: 200;
+}
+
+.cw-loc{
+    display: flex;
+    margin-bottom: 15px;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+
+.cw-left{
+    width: 100%;
+}
+
+.cw-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 80%;
+}
+
+
+.cw-right .stats{
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dt-tab{
+    background: var(--glass-blue);
+    border-radius: 20px;
+    border: 1px solid var(--border-white);
+    padding: 15px;
+    /* backdrop-filter: blur(15px); */
+}
+
+.fc-grid{
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+
+.fc-data{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr)
+}
+
+.fc-day{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+/* forecast icon */
+.fc-day img{
+    max-width: 45px;
+}
+
+.fc-temps{    
+    column-gap: 5px;
+    display: flex;
+}
+
+
+/* Air qaulity table */
+.air-q-chart{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 0.70rem;
+    margin-top: 15px;
+}
+
+
+.aq-values, .aq-desc{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.aq-values p, .aq-desc p{
+    width: 100%;
+    text-align: center;
+}
+
+.aq-values #good{
+    background: var(--green);
+}
+
+.aq-values #fair{
+    background: var(--lime);
+}
+
+.aq-values #moderate{
+    background: var(--yellow);
+} 
+
+.aq-values #poor{
+    background: var(--red);
+}
+
+.aq-values #very-poor{
+    background: var(--dark-red);
+} 
+
+
+/* 404 Page */
+.error-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* footer */
+footer{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 0.85rem;
+    bottom: 0;
+    width: 100%;
+    max-width: 1000px;
+    padding: 15px;
+    gap: 15px;
+}
+
+footer .socials{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: unset;
+    padding: unset;
+    gap: 15px;
+}
+
+.socials li a{
+    color: white;
+    text-decoration: none;
+}
+
+footer p{
+    width: 100%;
+}
+
+/* landscape mobile and all screens larger than 600px */
+@media screen and (min-width: 600px){
+
+    .cw-grid{
+        margin-bottom: 0;
+        max-width: 450px;
+    }
+
+    .content{
+        grid-template: 500px 500px;
+    }
+
+    .fc-grid{        
+        grid-area: 1 / 2 / span 2 / span 2;
+    }
+
+    .fc-grid h3, .aq-container h3{
+        text-align: center;
+    }
+
+    .fc-day p{
+        font-size: 0.95rem;
+    }
+
+    .fc-day img{
+        max-width: 60px;
+    }
+    
+    .fc-data{
+        grid-template-columns: auto;
+        grid-template-rows: repeat(5, 1fr);
+    }
+
+    .fc-day{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .fc-day #wk-day{
+        width: 100px;
+    }
+
+    footer{
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+ 
+}
+
+
+/* all screens larger than 800px */
+@media screen and (min-width: 800px){
+    .fc-day{
+        font-size: 1rem;
+    }
+
+    /* forecast icon */
+    .fc-day img{
+        max-width: 68px;
+    }
+
+    .air-q-chart{
+        font-size: 0.9rem;
+    }
+
+    .autocomplete-list{
+        width: 50%;
+    }
+}
+
+@media screen and (min-height: 600px) and (min-width: 800px) {
+    footer{
+        position: absolute;
+        bottom: 0;
+    }
+}

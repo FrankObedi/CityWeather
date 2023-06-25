@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block content %}
+<div class="error-container">
+  <img src="/static/graphics/nothing-found.png" />
+
+  <h3>
+    Sorry the city you entered <i>{{city}}</i>, could not be found. Please check
+    your spelling and try again
+  </h3>
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- Current weather -->
+
+<div class="cw-grid dt-tab">
+  <div class="cw-data-grid">
+    <div class="cw-left cw">
+      <div class="cw-loc">
+        <p>
+          {{current_weather.location.get('city')}},
+          {{current_weather.location.get('country')}}
+        </p>
+      </div>
+      <div class="cw-left-top">
+        <img src="{{current_weather.icon}}" />
+        <div class="cw-temp-val">
+          <h3>{{current_weather.temp}}&deg;C</h3>
+        </div>
+      </div>
+      <p>{{current_weather.location.get('day_time')}}</p>
+    </div>
+    <div class="cw-right cw">
+      <h3>{{current_weather.condition}}</h3>
+      <!-- <h3>Its raining a lot all day today</h3> -->
+      <div class="stats-container">
+        <div class="stats">
+          <p>Feels like:</p>
+          <p>{{current_weather.feel}}&deg;C</p>
+        </div>
+        <div class="stats">
+          <p>Humidity:</p>
+          <p>{{current_weather.humidity}}%</p>
+        </div>
+        <div class="stats">
+          <p>Wind:</p>
+          <p>{{current_weather.wind}} KpH</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 day forecast -->
+<div class="fc-grid dt-tab">
+  <h3>The Next Five Days</h3>
+  <div class="fc-data">
+    {% for day in forecast.days %}
+    <div class="fc-day">
+      <p id="wk-day">{{day.day}}</p>
+      <img src="{{day.icon}}" />
+      <div class="fc-temps">
+        <p><strong>{{day.max_temp}}&deg;</strong></p>
+        <p>{{day.min_temp}}&deg;</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Sunrise and Sunset Times -->
+<!-- <div class="cw-sun">
+  <div class="cw-sunrise">
+    <p>Sunrise</p>
+    <p>{{current_weather.sunrise}}</p>
+    <img src="/static/graphics/Sunrise.png" alt="sunrise icon" />
+  </div>
+  <div class="cw-sunset">
+    <p>Sunset</p>
+    <p>{{current_weather.sunset}}</p>
+    <img src="/static/graphics/Sunset.png" alt="sunset icon" />
+  </div>
+</div> -->
+
+<!-- Air quality information -->
+<div class="aq-container dt-tab">
+  <h3>Air Quality Health Index: {{current_weather.air_quality}}</h3>
+  <div class="air-q-chart">
+    <div class="aq-values">
+      <p id="good">1</p>
+      <p id="fair">2</p>
+      <p id="moderate">3</p>
+      <p id="poor">4</p>
+      <p id="very-poor">5</p>
+    </div>
+    <div class="aq-desc">
+      <p>Good</p>
+      <p>Fair</p>
+      <p>Moderate</p>
+      <p>Poor</p>
+      <p>Very Poor</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
