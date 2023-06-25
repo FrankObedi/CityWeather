@@ -28,7 +28,6 @@ class Forecast(object):
 def get_forecast(response):
 
     forecast = Forecast()
-    # print(response)
     current_date = response['list'][0].get('dt_txt').split(' ')[0]
 
     # time stemps counter
@@ -84,6 +83,4 @@ def get_forecast(response):
             min_temp = response['list'][i]['main']['temp']
             max_temp = response['list'][i]['main']['temp']
         prev = response['list'][i]['dt_txt'].split(' ')[0]
-
-    print(forecast.length)
     return forecast

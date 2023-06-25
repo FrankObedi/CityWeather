@@ -38,8 +38,6 @@ def get_current(weather_response: str, API_KEY: str):
     air_quality = ''
     # check if error in the response
     if air_quality_response.get('cod') and air_quality_response.get('cod') != 200:
-        print("Error: air quality data")
-        print(air_quality_response)
         air_quality = 'unavailable'
     else:
         air_quality = air_quality_response['list'][0]['main']['aqi']

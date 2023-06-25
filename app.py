@@ -28,17 +28,12 @@ def home():
     if city == None:
         return render_template('welcome.html')
 
-    print("City entered:", city)
-
     # API_KEY = '353c75187ff7ce33d78ef7e1bbc485fb'
 
     # get current data
     weather_api = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}&units=metric'
     weather_response = requests.get(weather_api.format(
         city, os.getenv('API_KEY'))).json()
-
-    print(os.getenv('API_KEY'))
-    print(weather_response)
 
     # get forecast data
     forecast_apa = 'https://api.openweathermap.org/data/2.5/forecast?q={}&appid={}&units=metric'
@@ -47,7 +42,6 @@ def home():
 
     # erro message when city is not found
     if forecast_response.get('cod') != '200' or weather_response.get('cod') != 200:
-        # print('\nErro code: ', forecast_response.get('cod'), "\n")
         return render_template('404.html', city=city)
 
     current_weather = get_current(weather_response, os.getenv('API_KEY'))
