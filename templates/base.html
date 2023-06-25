@@ -40,8 +40,8 @@
                 required
                 name="city"
                 disabled
-                pattern="^[A-Za-z, ]*$"
-                title="City name can only contain letters, spaces and commas"
+                pattern="^((?![0-9]).)*$"
+                title="City name cannot container numbers"
                 placeholder="Enter city name"
               />
 
