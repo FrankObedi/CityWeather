@@ -1,16 +1,24 @@
 # CityWeather Web App
 
-## About the project
-CityWeather is a simple weather app built on the OpenWeatherMap API.
-Using this app you can enter the name of cities around the world and it will give you the current weather data along with the 5 day forecaset, and the Air Quality Health Index.
-You can try it out [here](https://cityweatherapp.onrender.com/) (***note: it takes a while to load***)
+## About the Project
+**CityWeather** is an intuitive weather application that leverages the **[OpenWeatherMap API](https://openweathermap.org/api)** to provide real-time weather data. Designed for global use, it allows users to search for any city and receive current weather conditions, a 5-day forecast, and the Air Quality Health Index (AQHI).
 
-## Technologies used
-I used the following technologies to implement the app:
-- Python
-- Flask
-- HTML5
-- CSS3
-- JavaScript
+Try CityWeather [here](https://cityweatherapp.onrender.com/) (Please note: Initial load time may vary.)
+
+## Technologies Used
+This application was crafted using a blend of modern technologies to ensure efficiency and a great user experience:
+- **Python**: For backend logic and server-side operations.
+- **Flask**: A lightweight web application framework to serve the application.
+- **HTML5**: Structuring the web app.
+- **CSS3**: Styling and presenting the web app.
+- **JavaScript**: Enhancing interactivity and ensuring a dynamic user interface.
+
+## Features
+- **Weather Data**: Get up-to-date weather information for any city.
+- **5-Day Forecast**: Plan ahead with a comprehensive 5-day weather outlook.
+- **Air Quality Index**: Stay informed about the air quality health standards in your area.
+
+
+
 
 
