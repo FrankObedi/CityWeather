@@ -6,8 +6,6 @@ from currentWeather import get_current
 import os
 from dotenv import load_dotenv
 
-# cload api key from env
-
 
 def configure():
     load_dotenv()
@@ -27,8 +25,6 @@ def home():
 
     if city == None:
         return render_template('welcome.html')
-
-    # API_KEY = '353c75187ff7ce33d78ef7e1bbc485fb'
 
     # get current data
     weather_api = 'https://api.openweathermap.org/data/2.5/weather?q={}&appid={}&units=metric'
@@ -51,4 +47,4 @@ def home():
 
 
 if __name__ == '__main__':
-    app.run
+    app.run()
