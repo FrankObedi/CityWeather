@@ -1,3 +1,4 @@
 .env
+venv
 python3-virtualenv
 __pycache__

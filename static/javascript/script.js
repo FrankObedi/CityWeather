@@ -74,7 +74,7 @@ function onInputChange(){
     if(searchVal.length > 1){
   
         let filteredNames = []
-        // console.log(searchVal)
+        
         // target city names first
         cityNames.forEach((cityName) =>{
             let splitIndex = cityName.indexOf(',') + 2
@@ -82,17 +82,9 @@ function onInputChange(){
             if(cityName.substr(0, searchVal.length).toLowerCase() == searchVal || cityName.substr(splitIndex, cityName.length).toLowerCase().startsWith(searchVal)){
                 if(filteredNames.length < 500){filteredNames.push(cityName)}
             }    
-            
-      
-           
+                       
         })
 
-
-        // target country names
-        // if(searchVal.length > 3){
-        //     filteredNames = cityNames.filter(cityName => cityName.toLowerCase().includes(searchVal))
-        // }
-        
         if (filteredNames.length > 0){
             createAutoCompleteDropDown(filteredNames)
         } 

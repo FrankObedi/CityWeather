@@ -26,61 +26,70 @@ class Forecast(object):
 
 
 def get_forecast(response):
+    """
+    Processes the weather forecast response from OpenWeatherMap API and creates a Forecast object.
 
+    Args:
+    response (dict): The response dictionary from the OpenWeatherMap forecast API.
+
+    Returns:
+    Forecast: A Forecast object containing Day objects for each day of the forecast.
+    """
+    
     forecast = Forecast()
-    current_date = response['list'][0].get('dt_txt').split(' ')[0]
-
-    # time stemps counter
+    current_date = response['list'][0].get('dt_txt').split(' ')[0]    
     time_stamps_counter = 0
-    prev = current_date
-
-    # set default min and max temperature variables
+    prev = current_date    
     min_temp = 999
     max_temp = 0
-
-    # get todays date to compare with first time stamp in api response
-    today = str(datetime.datetime.today())
-
+    icon = "https://openweathermap.org/img/wn/01d@2x.png"  # Default sunny icon    
+    today = str(datetime.datetime.today()) # Get the current date and time 
     start = 1
+    rain_icon = None # Variable to store rain icon URL if present
+
+
+    # Start from the second item if the forecast's date is not today's date
     if today != current_date:
         start = 0
-    rain_icon = None
+    
+
     for i in range(start, len(response['list'])):
-        # compare to see it time stemp is from same date
         date = response['list'][i]['dt_txt'].split(' ')[0]
-        if date == prev:
-            # find min temp
+        if date == prev: # If the date matches the previous one, process the data
+            # Find the min and max temperatures
             if response['list'][i]['main']['temp'] < min_temp:
                 min_temp = response['list'][i]['main']['temp']
-            # find max temp
-            if response['list'][i]['main']['temp'] > max_temp:
+
+            if response['list'][i]['main']['temp'] > max_temp or 'icon' not in locals():
                 max_temp = response['list'][i]['main']['temp']
                 icon_code = response['list'][i]['weather'][0]['icon']
                 icon = f'https://openweathermap.org/img/wn/{icon_code}@2x.png'
 
+             # Check if the icon represents rain, and update rain_icon if necessary
             if response['list'][i]['weather'][0]['icon'] == '10d':
                 rain_icon_code = response['list'][i]['weather'][0]['icon']
                 rain_icon = f'https://openweathermap.org/img/wn/{rain_icon_code}@2x.png'
-            # increment time stamp counter
-            time_stamps_counter += 1
 
-            # check if we went through all time stamps of give date
-            if time_stamps_counter == 7:
-                if rain_icon != None:
+            time_stamps_counter += 1 # Increment the counter for the time stamps processed
+
+            if time_stamps_counter == 7: # If 7 time stamps are processed (daily forecast data)
+                if rain_icon is not None: # If rain is detected, use the rain icon
                     icon = rain_icon
-                if time_stamps_counter == 7:
 
-                    # create a new day object and add it to forecast object
-                    forecast.add_day(
-                        Day(get_day_time(date, True), round(max_temp), round(min_temp), icon))
+                # Add the current day's forecast to the forecast object
+                forecast.add_day(
+                    Day(get_day_time(date, True), round(max_temp), round(min_temp), icon)
+                )
 
-                    # reset time stamps counter
-                    time_stamps_counter = 0
+                time_stamps_counter = 0 # Reset the counter for the next day
 
-        # if date is not same as previous one then a new time date has been found
-        # now we want to find the min_temp and max_temp from the new date's time stamps
-        else:
+        else: # If the date has changed, start processing a new date
             min_temp = response['list'][i]['main']['temp']
             max_temp = response['list'][i]['main']['temp']
-        prev = response['list'][i]['dt_txt'].split(' ')[0]
-    return forecast
+            icon_code = response['list'][i]['weather'][0]['icon']
+            icon = f'https://openweathermap.org/img/wn/{icon_code}@2x.png'
+
+        prev = response['list'][i]['dt_txt'].split(' ')[0] # Update the previous date
+
+    return forecast # Return the created Forecast object containing all processed days
+
