@@ -5,7 +5,13 @@ let searchIcon = document.querySelector('.bx-search-alt-2')
 let logo = document.querySelector('.logo')
 let cwGrid = document.querySelector('#cw-grid')
 let footer = document.querySelector('#footer')
+let loader = document.querySelector('.loader');
 
+window.onload = ()=>{
+    if(loader){
+        loader.style.display = 'none';
+    }
+}
 
 if(!cwGrid){
     footer.style.position = 'absolute'
@@ -74,7 +80,7 @@ function onInputChange(){
     if(searchVal.length > 1){
   
         let filteredNames = []
-        
+        // console.log(searchVal)
         // target city names first
         cityNames.forEach((cityName) =>{
             let splitIndex = cityName.indexOf(',') + 2
@@ -82,9 +88,11 @@ function onInputChange(){
             if(cityName.substr(0, searchVal.length).toLowerCase() == searchVal || cityName.substr(splitIndex, cityName.length).toLowerCase().startsWith(searchVal)){
                 if(filteredNames.length < 500){filteredNames.push(cityName)}
             }    
-                       
+            
+      
+           
         })
-
+        
         if (filteredNames.length > 0){
             createAutoCompleteDropDown(filteredNames)
         } 
