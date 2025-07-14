@@ -3,10 +3,9 @@
 ## About the Project
 **CityWeather** is an intuitive weather application that leverages the **[OpenWeatherMap API](https://openweathermap.org/api)** to provide real-time weather data. Designed for global use, it allows users to search for any city and receive current weather conditions, a 5-day forecast, and the Air Quality Health Index (AQHI).
 
-Try CityWeather [here](https://city-weather-app-virid.vercel.app/) (Please note: Initial load time may vary.)
+Try CityWeather [here](https://city-weather-app-virid.vercel.app/)
 
 ## Technologies Used
-This application was crafted using a blend of modern technologies to ensure efficiency and a great user experience:
 - **Python**: For backend logic and server-side operations.
 - **Flask**: A lightweight web application framework to serve the application.
 - **HTML5**: Structuring the web app.
